@@ -1,0 +1,7 @@
+(deflisten gpu `./bar/scripts/gpu.sh`)
+
+(defwidget gpu []
+    (box :space-evenly false :orientation "h"
+    (eventbox :cursor "pointer" :onclick "./bar/popup-menus/scripts/toggle-wifi.sh" (label :text "󰢮" :class "gpu-i"))
+    (label :text "${gpu.temperature}C | ${gpu.usage}%" :class "gpu-t")
+))

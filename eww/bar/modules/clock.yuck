@@ -1,0 +1,6 @@
+(defpoll time :interval "5s" "date +\"%H:%M \"")
+
+(defwidget clock []
+    (box :space-evenly false :orientation "h"
+        (eventbox (label :text "󰥔" :class "clk-i"))
+        (eventbox :cursor "pointer" :onclick "" (label :text "${time}" :class "clk-t"))))

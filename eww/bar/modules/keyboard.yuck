@@ -1,0 +1,8 @@
+(defvar kblayout "English (UK)")
+
+
+(defwidget keyboard[]
+    (box 
+        :space-evenly false
+        (label :class "kb-i" :text "󰌌")
+        (label :class "kb-t" :text "${kblayout}")))

@@ -1,0 +1,4 @@
+(defwidget message []
+    (box
+        :space-evenly false
+        :orientation "h"))

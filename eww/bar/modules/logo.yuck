@@ -1,0 +1,8 @@
+(defwidget logo[]
+    (eventbox :cursor "pointer"
+    :tooltip "I use Arch btw"
+    :onclick "$HOME/.config/waybar/scripts/logobutton.sh"
+    (label :class "logo" :text "󰣇 ")))
+
+
+

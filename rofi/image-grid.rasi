@@ -1,0 +1,38 @@
+configuration {
+    show-icons: true;
+}
+
+@theme "~/.cache/wal/colors-rofi-dark.rasi"
+
+window {
+    width: 70%;
+    height: 55%;
+}
+
+mainbox {
+    children: [ inputbar, listview ];
+}
+
+listview {
+    columns: 3;
+    fixed-columns: true;
+    spacing: 24px;
+    scrollbar: true;
+}
+
+element {
+    orientation: vertical;
+    padding: 12px;
+}
+
+element-icon {
+    size: 160px;
+}
+
+element-text {
+    horizontal-align: 0.5;
+    vertical-align: 0.5;
+    text-color: inherit;
+    wrap: true;
+}
+

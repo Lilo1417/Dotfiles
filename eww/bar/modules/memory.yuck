@@ -1,0 +1,6 @@
+(defwidget memory []
+    (box
+        :space-evenly false
+        :orientation "h"
+        (label :class "mem-i" :text "  ")
+        (label :tooltip "Memory Usage" :class "mem-usage" :text "${round(EWW_RAM.used_mem / 1000000000, 2)} / ${round(EWW_RAM.total_mem / 1000000000, 0)} GB")))

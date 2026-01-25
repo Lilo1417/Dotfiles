@@ -1,0 +1,68 @@
+(include "./ewwvariables.yuck")
+(include "./bar/bar.yuck")
+
+
+(include "./bar/popup_menus/media/media.yuck")
+
+(defwidget InformationMainWindow []
+    (box 
+        :class "InformationMainWindow"
+        :spacing 10
+        :hexpand true
+        :halign "fill"
+        :orientation "v"
+        :space-evenly false
+        (Codex)
+        (Message)
+        (InfoTitle)
+        (HardwareInformation)))
+(defwidget Codex []
+        (label  :text "codex"
+                :valign "start"
+                :class "Title"
+        :hexpand true
+))
+
+(defwidget InfoTitle []
+        (label :text "system information"
+            :valign "start"
+            :class "Title"))
+
+(defwidget Message []
+        (label :text codex
+                :valign "start"
+                :halign "start"
+                :hexpand true
+                :class "Message"))
+
+
+(defwidget HardwareInformation []
+    (box :orientation "v"
+        (label :hexpand true 
+            :text "CPU Usage: ${round(EWW_CPU.avg, 1)}%" :halign "start" :class "Subtitle")
+        (label 
+            :hexpand true 
+            :text "CPU Temperature: ${EWW_TEMPS.ASUSEC_CPU} (C)"
+            :class "Subtitle"
+            :halign "start")
+        (label :hexpand true
+            :text "Memory Usage: ${round(EWW_RAM.used_mem/(1024*1024*1024), 2)}/${round(EWW_RAM.total_mem/(1024*1024*1024), 2)}GB"
+            :halign "start"
+            :class "Subtitle"))
+)
+(defwindow Systeminformation
+    :monitor 1
+    :class "Informationwindow"
+    :windowType "normal"
+    :hexpand true
+    :geometry (geometry :x "0%"
+                        :y "0%"
+                        :height "95%"
+                        :width "30%"
+                        :anchor "center left")
+    :stacking "fg"
+    :halign "fill"
+    :exclusive "true"
+    :space-evenly false
+    (InformationMainWindow))
+                    

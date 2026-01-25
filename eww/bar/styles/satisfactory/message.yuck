@@ -1,0 +1,6 @@
+(defwidget message []
+    (box
+        :space-evenly false
+        :orientation "h"
+        :class "message"
+        (button :class "message" :onclick "steam steam://rungameid/526870" "Efficiency   first")))

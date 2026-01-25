@@ -1,0 +1,10 @@
+(defpoll dt :interval "5s" "date +\"%a, %d. %m. %y\"")
+
+(defwidget date []
+    (box :space-evenly false :orientation "h"
+    (eventbox (label :text "" :class "date-i"))
+    (eventbox (label :text "${dt}" :class "date-t"))
+    )
+)
+
+

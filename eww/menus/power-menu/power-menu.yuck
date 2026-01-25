@@ -1,0 +1,60 @@
+(defwindow power-menu
+    :monitor 0
+    :stacking "fg"
+    :namespace "bar"
+    :geometry (geometry
+        :anchor "center"
+        :width "50%"
+        :height "50%")
+    :exclusive true
+    :focusable true
+    :onkeypressed (keyevent :key "Escape" :command "notify-send 'test' 'test'")
+    (powerMenu)
+)
+
+
+(defwidget powerMenu []
+    (box
+        :orientation "v"
+        :class "Menu"
+    (box :class "powerMenu" :class "powerMenu" :orientation "h" (poweroff) (restart))
+    (box :orientation "h" :class "powerMenu" (Suspend) (Change)))
+    )
+
+(defwidget poweroff []
+    (button
+        :onclick "notify-send 'helllo' 'test'"
+        :vexpand false
+        (box
+            :class "option"
+            :orientation "v"
+            (label :class "power-i" :text "")
+            (label :class "power-t" :text "Breakdown Powergrid"))))
+(defwidget restart []
+    (button
+        :onclick "notify-send 'helllo' 'test'"
+        :vexpand false
+        (box
+            :orientation "v"
+            :class "option"
+            (label :class "power-i" :text "")
+            (label :class "power-t" :text "Restart"))))
+    
+(defwidget Suspend []
+    (button
+        :onclick "notify-send 'helllo' 'test'"
+        :vexpand false
+        (box
+            :orientation "v"
+            :class "option"
+            (label :class "power-i" :text "󰤄")
+            (label :class "power-t" :text "Suspend"))))
+(defwidget Change []
+    (button
+        :onclick "notify-send 'helllo' 'test'"
+        :vexpand false
+        (box
+            :orientation "v"
+            :class "option"
+            (label :class "power-i" :text "󰍃")
+            (label :class "power-t" :text "Change User"))))

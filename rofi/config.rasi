@@ -1,0 +1,17 @@
+configuration {
+    modi: "window,drun";
+    display-drun: "Applications";
+    display-window: "Windows";
+    drun-display-format: "{icon} {name}";
+    show-icons: true;
+    icon-theme: "Papirus";
+    font: "Gohu 11 Nerd Font Mono 13";
+}
+
+@theme "~/.cache/wal/colors-rofi-dark.rasi"
+
+
+
+element-text {
+    text-color: inherit;
+}

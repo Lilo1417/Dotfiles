@@ -1,0 +1,15 @@
+* { all: unset}
+
+@import "./main.scss";
+
+
+.Title {
+    font-family: Star Jedi Hollow;
+}
+.Message {
+    font-family: Death Star;
+}
+.Subtitle {
+    font-family: Death Star;
+    margin: 0 0 0 20px
+}

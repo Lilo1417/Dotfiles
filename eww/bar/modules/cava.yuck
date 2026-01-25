@@ -1,0 +1,6 @@
+(deflisten cava `./bar/scripts/cava.sh`)
+
+
+(defwidget cava []
+(label :text "${cava}" :class "cava")
+)

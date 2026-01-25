@@ -1,0 +1,16 @@
+* { all: unset}
+
+@import "./main";
+
+
+.Title {
+    font-family: Star Jedi Hollow;
+}
+.Message {
+    letter-spacing: unset;
+    font-family: Lord Juusai;
+}
+.Subtitle {
+    font-family: Death Star;
+    margin: 0 0 0 20px
+}

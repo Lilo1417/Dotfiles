@@ -1,0 +1,100 @@
+;; Include all the modules
+(include "./bar/modules/logo.yuck")
+(include "./bar/modules/keyboard.yuck")
+(include "./bar/modules/message.yuck")
+(include "./bar/modules/gpu.yuck")
+(include "./bar/modules/workspaces.yuck")
+(include "./bar/modules/cpu.yuck")
+(include "./bar/modules/memory.yuck")
+(include "./bar/modules/cava.yuck")
+(include "./bar/modules/network.yuck")
+(include "./bar/modules/clock.yuck")
+(include "./bar/modules/date.yuck")
+(include "./bar/modules/audio.yuck")
+
+
+(defwindow eww-bar0
+    :monitor 1
+    :stacking "fg"
+    :namespace "bar"
+    :geometry (geometry
+        :anchor "top center"
+        :width "98%"
+        :height "4%")
+    :exclusive true
+
+    (box
+    :class "bar"
+    :orientation "h"
+    :space-evenly false
+    :halign "fill"
+    (box :halign "start" :hexpand true (left))
+;;    (box :halign "center" :hexpand "true" (middle))
+    (box :halign "end"  :hexpand true (right))
+
+    )
+)
+(defwindow bar1
+    :monitor 1
+    :stacking "fg"
+    :namespace "bar"
+    :geometry (geometry
+        :anchor "top center"
+        :width "98%"
+        :height "50px")
+    :exclusive true
+
+    (box
+    :class "bar"
+    :orientation "h"
+    :space-evenly true
+    (left)
+    (middle)
+    (right)
+
+    )
+    )
+
+(deflisten system :initial "" `./bar/scripts/system.sh`)
+
+
+;; LEFT Modules
+(defwidget left[]
+    (box :class "left-modules"
+         :halign "start"
+         :valign "center"
+         :spacing 10
+         :space-evenly false
+         (logo)
+         (workspaces)
+         (cpu)
+         (memory)
+         (gpu)
+         )
+)
+
+(defwidget middle[]
+    ;; CENTER Modules
+    (box :class "center-modules"
+         :halign "center"
+         :hexpand "true"
+         :valign "center"
+         :spacing 10
+         :space-evenly false
+         (message))
+)
+(defwidget right[]
+    ;; RIGHT Moduler
+    (box :class "right-modules"
+         :halign "end"
+         :valign "center"
+         :spacing 10
+         :space-evenly false
+         (keyboard)
+         (audio)
+         (network)
+         (date)
+         (clock)
+         )
+)
+

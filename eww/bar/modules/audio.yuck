@@ -1,0 +1,7 @@
+(deflisten audio './bar/scripts/audio.sh')
+
+(defwidget audio []
+    (box
+        :space-evenly false :orientation "h"
+        (label :class "audio-i" :text "${audio.icon}")
+        (label :class "audio-t" :text "${audio.value}")))
