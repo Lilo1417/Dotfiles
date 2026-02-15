@@ -1,4 +1,4 @@
-(deflisten network `./bar/scripts/network.sh`)
+(deflisten network :initial "" `./bar/scripts/network.sh`)
 
 (defwidget network []
     (box :space-evenly false :orientation "h"

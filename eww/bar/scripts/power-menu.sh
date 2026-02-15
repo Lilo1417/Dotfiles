@@ -3,7 +3,7 @@
 
 
 choice=$(printf "  Poweroff\n  Restart\n󰍃 Change User\n⏾ Suspend" | \
-  wofi --dmenu --insensitive --cache-file /dev/null --style ~/.config/wofi/style.css)
+  rofi -show dmenu --insensitive --cache-file /dev/null --style ~/.config/wofi/style.css)
 
 case "$choice" in
   "  Poweroff") ddcutil --display 2 setvcp D6 5 && ddcutil --display 1 setvcp D6 5 && systemctl poweroff ;;

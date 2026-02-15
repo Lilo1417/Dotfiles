@@ -1,5 +1,4 @@
-#!/usr/bin/env bash
-
+#!/bin/bash
 # Map numbers 1-10 to Kanji
 declare -A kanji_map=(
 	[1]="󰬺" [2]="󰬻" [3]="󰬼" [4]="󰬽" [5]="󰬾"
@@ -80,30 +79,35 @@ ws() {
 
 		# Append to output only if class is non-empty
 		if [[ -n "$cls" ]]; then
-			output+="(eventbox :class \"workspace-e\" :cursor \"pointer\" :onclick \"hyprctl dispatch workspace $wsid\" (label :class \"$cls\" :text \"$label\"))"
+            output+="(eventbox :class \"workspace-e\" :cursor \"pointer\" :onclick \"hyprctl dispatch workspace $wsid\" (label :class \"$cls\" :text \"$label\"))"
 		fi
 	done
 
 	echo "(box :halign 'start' :orientation 'h' $output)"
 }
 
-# Use Hyprland's environment variables directly
-if [[ -z "$HYPRLAND_INSTANCE_SIGNATURE" ]]; then
-	echo "(box :halign 'start' :orientation 'h')"
-	exit 0
+XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-/run/user/$(id -u)}"
+
+HYPRLAND_SIGNATURE_ACTUAL=$(ls -td "$XDG_RUNTIME_DIR/hypr/"*/ 2>/dev/null | head -n1 | xargs -r basename)
+
+if [[ -z "$HYPRLAND_SIGNATURE_ACTUAL" ]]; then
+	echo "No Hyprland socket found. Exiting."
+	exit 1
 fi
 
-SOCKET="$XDG_RUNTIME_DIR/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock"
+SOCKET="$XDG_RUNTIME_DIR/hypr/${HYPRLAND_SIGNATURE_ACTUAL}/.socket2.sock"
 
-# Initial output
 ws
 
-# Listen for workspace events
+echo "after ws"
+
 stdbuf -oL socat -U - UNIX-CONNECT:"$SOCKET" | while read -r line; do
 	case $line in
-		"workspace>>"* | "createworkspace>>"* | "destroyworkspace>>"*)
-			ws
-			;;
+	"workspace>>"* | "createworkspace>>"* | "destroyworkspace>>"*)
+		ws
+		;;
 	esac
 done
 
+
+echo "finished"

@@ -1,0 +1,7 @@
+(deflisten bat `./bar/scripts/battery.sh`)
+
+(defwidget battery []
+        (box :space-evenly false :orientation "h"
+            (label :text "${bat.icon}" :class "bat-i")
+            (label :text "${bat.percent}%" :class "bat-t")
+))
